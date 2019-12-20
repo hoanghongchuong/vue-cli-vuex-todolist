@@ -6,7 +6,7 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <h1>{{ msg }}</h1>
+    <h2>{{count}}</h2>
     <h2>Home page</h2>
     <ul>
       <li>
@@ -16,15 +16,35 @@
         <router-link to="/news">News</router-link>
       </li>
     </ul>
+<!--    <img src="http://lazi.vn/files/large/5a64450874df215" alt="" width="100"><span class="logo-title">Tết Tết Tết đến rồi!!!</span>-->
+    <br>
+    <div class="row">
+      <div class="col-md-6"><ListTask></ListTask></div>
+      <div class="col-md-6"><CompletedTask></CompletedTask></div>
+    </div>
+    <GetTask></GetTask>
   </div>
 </template>
 
 <script>
+  import GetTask from './GetTask.vue'
+  import ListTask from './ListTask.vue'
+  import CompletedTask from './CompletedTask.vue'
 export default {
   name: 'HelloWorld',
+  components: {
+    GetTask,
+    ListTask,
+    CompletedTask
+  },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  computed: {
+    count () {
+      return this.$store.state.count
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="contact">
+  <div class="contact container tac">
     <h1>{{ msg }}</h1>
     <h2>Contact page</h2>
     <router-link to="/">Home</router-link>
@@ -8,9 +8,10 @@
     <h2>
       {{ message }}
     </h2>
-    <h2>{{price}}</h2>
-    <button @click="changePrice()">Price plus</button>
-    <button @click="minusPrice()">Price minus</button>
+    <h2>{{count}}</h2>
+    <h2>{{newTask}}</h2>
+    <button @click="plus()">Plus</button>
+    <button @click="minus()">Minus</button>
   </div>
 </template>
 
@@ -21,15 +22,20 @@ export default {
     return {
       msg: 'Contact page',
       message: 'See again',
-      price: 200,
+      price: 200
     }
   },
   methods: {
-    changePrice () {
-      return this.price = this.price + 10
+    plus () {
+      this.$store.dispatch('increment')
+    }
+  },
+  computed: {
+    count () {
+      return this.$store.state.count
     },
-    minusPrice () {
-      return this.price = this.price - 10
+    newTask () {
+      return this.$store.state.newTask
     }
   }
 }

@@ -10,7 +10,7 @@ export default new Vuex.Store({
   state: {
     tasks: [],
     newTask: '',
-    count: 0
+    count: 120
   },
   getters,
   mutations,
